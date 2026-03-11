@@ -1,0 +1,252 @@
+.navbar .nav-link {
+    color: black;
+    font-weight: 600;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #79480C;
+}
+
+.boton-menu {
+    background-color: #79480C;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+.boton-menu .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.logo-navbar,
+.icono-perfil {
+    width: auto;
+}
+
+.logo-navbar {
+    height: 80px;
+}
+
+.icono-perfil {
+    height: 40px;
+}
+
+.btn-reservar {
+    background-color: #79480C;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 16px;
+    cursor: pointer;
+}
+
+.btn-mas-info {
+    background-color: #79480C;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 18px;
+    font-weight: 600;
+    border-radius: 6px;
+    margin: auto auto 10px auto;
+    cursor: pointer;
+}
+
+.btn-reservar:hover,
+.btn-mas-info:hover {
+    background-color: #df8c2e;
+    color: white;
+}
+
+.navbar-linea .container {
+    border-bottom: 2px solid #79480C;
+    padding-bottom: 8px;
+}
+
+.separador-linea {
+    margin: 10px 0;
+}
+
+.linea-marron {
+    height: 1.5px;
+    background-color: #79480C;
+    width: 100%;
+}
+
+.linea-card {
+    border: none;
+    border-top: 2px solid #ffffff;
+    margin: 15px 0 30px 0;
+    opacity: 1;
+}
+
+.imagen-carrusel {
+    height: 85vh;
+    object-fit: cover;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.carousel-caption-custom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.titulo-seccion,
+.footer-titulo,
+.titulo-blanco {
+    font-weight: 700;
+}
+
+.titulo-blanco {
+    background: rgba(255, 255, 255, 0.611);
+    color: #000;
+    padding: 12px 26px;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.titulo-negro {
+    background-color: rgba(0, 0, 0, 0.564);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 22px;
+    font-size: 1.2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: white;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+}
+
+.card-servicio {
+    background-color: #79480C;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.card-servicio .card-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.card-servicio .card-text {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.card-servicio .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.imagen-card {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.titulo-seccion {
+    display: inline-block;
+    border-bottom: 2px solid #79480C;
+    padding-bottom: 3px;
+}
+
+.texto-seccion {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.imagen-seccion {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.footer {
+    color: white;
+}
+
+.footer-titulo {
+    margin-bottom: 20px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.footer-icono {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+}
+
+@media (max-width: 991.98px) {
+    .imagen-carrusel {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .imagen-carrusel {
+        height: 60vh;
+    }
+
+    .titulo-blanco {
+        font-size: 1.4rem;
+        padding: 10px 20px;
+    }
+
+    .titulo-negro {
+        font-size: 1rem;
+        padding: 8px 18px;
+    }
+
+    .card-servicio {
+        min-height: 190px;
+    }
+
+    .card-servicio .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-servicio .card-text {
+        font-size: 0.95rem;
+    }
+}
