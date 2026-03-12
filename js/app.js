@@ -3,6 +3,9 @@ const btnIrHotel = document.getElementById("btn-ir-hotel");
 const btnIrRestaurante = document.getElementById("btn-ir-restaurante");
 const btnVolverInicioHotel = document.getElementById("btn-volver-inicio-hotel");
 const btnVolverInicioRestaurante = document.getElementById("btn-volver-inicio-restaurante");
+const btnIrRegistro = document.getElementById("btn-ir-registro");
+const btnIrLogin = document.getElementById("btn-ir-login");
+
 const params = new URLSearchParams(window.location.search);
 const tipoReserva = params.get("tipo");
 
@@ -17,20 +20,42 @@ if (tipoReserva === "hotel") {
     mostrarPage("page-restaurante");
 }
 
-btnIrHotel.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarPage("page-hotel");
-});
+if (btnIrHotel) {
+    btnIrHotel.addEventListener("click", function (e) {
+        e.preventDefault();
+        mostrarPage("page-hotel");
+    });
+}
 
-btnIrRestaurante.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarPage("page-restaurante");
-});
+if (btnIrRestaurante) {
+    btnIrRestaurante.addEventListener("click", function (e) {
+        e.preventDefault();
+        mostrarPage("page-restaurante");
+    });
+}
 
-btnVolverInicioHotel.addEventListener("click", function () {
-    mostrarPage("page-inicio");
-});
+if (btnVolverInicioHotel) {
+    btnVolverInicioHotel.addEventListener("click", function () {
+        mostrarPage("page-inicio");
+    });
+}
 
-btnVolverInicioRestaurante.addEventListener("click", function () {
-    mostrarPage("page-inicio");
-});
+if (btnVolverInicioRestaurante) {
+    btnVolverInicioRestaurante.addEventListener("click", function () {
+        mostrarPage("page-inicio");
+    });
+}
+
+if (btnIrRegistro) {
+    btnIrRegistro.addEventListener("click", function (e) {
+        e.preventDefault();
+        mostrarPage("page-registro");
+    });
+}
+
+if (btnIrLogin) {
+    btnIrLogin.addEventListener("click", function (e) {
+        e.preventDefault();
+        mostrarPage("page-login");
+    });
+}

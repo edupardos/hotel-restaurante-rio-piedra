@@ -42,7 +42,7 @@
                     </li>
 
                     <li>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="loginregistro.html">
                             <img src="img/usuario.png" alt="perfil" class="icono-perfil">
                         </a>
                     </li>
@@ -198,11 +198,66 @@
     <!-- Page Reservar Restaurante -->
     <div class="page" id="page-restaurante">
         <section class="py-5">
-            <div class="container text-center">
-                <h2>Formulario de reserva del restaurante</h2>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <h2 class="text-center mb-4">Reservar en el Restaurante</h2>
+                        <p class="text-center mb-5">
+                            Completa el siguiente formulario para solicitar tu reserva.
+                        </p>
+                        <div class="form-reserva p-4 p-md-5 shadow-sm bg-white">
+                            <div class="d-flex justify-content-start mb-3">
+                                <button type="button" class="btn btn-reservar" id="btn-volver-inicio-restaurante">
+                                    Atrás
+                                </button>
+                            </div>
 
-                <div class="btn-reservar mt-4" id="btn-volver-inicio-restaurante">
-                    Volver
+                            <form>
+                                <div class="row g-4">
+                                    <!-- Nombre y apellidos -->
+                                    <div class="col-12 col-lg-6">
+                                        <label for="nombreRest" class="form-label text-center w-100">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Introduce tu nombre" id="nombreRest">
+                                    </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <label for="apellidosRest" class="form-label text-center w-100">Apellidos</label>
+                                        <input type="text" class="form-control" placeholder="Introduce tus apellidos" id="apellidosRest">
+                                    </div>
+
+                                    <!-- Teléfono y fecha -->
+                                    <div class="col-12 col-lg-6">
+                                        <label for="telefonoRest" class="form-label text-center w-100">Teléfono</label>
+                                        <input type="tel" class="form-control" placeholder="Introduce tu teléfono" id="telefonoRest">
+                                    </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <label for="fechaHoraRest" class="form-label text-center w-100">Fecha y hora de la reserva</label>
+                                        <input type="datetime-local" class="form-control" id="fechaHoraRest">
+                                    </div>
+
+                                    <!-- Correo electrónico -->
+                                    <div class="col-12">
+                                        <label for="correoRest" class="form-label text-center w-100">Correo electrónico</label>
+                                        <input type="email" class="form-control" placeholder="Introduce tu correo electrónico" id="correoRest">
+                                    </div>
+
+                                    <!-- Observaciones -->
+                                    <div class="col-12">
+                                        <label for="observacionesRest" class="form-label text-center w-100">Observaciones (opcional)</label>
+                                        <textarea class="form-control" placeholder="Escribe aquí cualquier observación adicional" id="observacionesRest" rows="4"></textarea>
+                                    </div>
+
+                                    <!-- Botón confirmar -->
+                                    <div class="col-12 text-center pt-3">
+                                        <button type="submit" class="btn-reservar px-5 py-3">
+                                            Confirmar reservar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
