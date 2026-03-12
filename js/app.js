@@ -3,8 +3,10 @@ const btnIrHotel = document.getElementById("btn-ir-hotel");
 const btnIrRestaurante = document.getElementById("btn-ir-restaurante");
 const btnVolverInicioHotel = document.getElementById("btn-volver-inicio-hotel");
 const btnVolverInicioRestaurante = document.getElementById("btn-volver-inicio-restaurante");
+const btnVolverInicioCelebraciones = document.getElementById("btn-volver-inicio-celebraciones");
 const btnIrRegistro = document.getElementById("btn-ir-registro");
 const btnIrLogin = document.getElementById("btn-ir-login");
+const btnIrCelebraciones = document.getElementById("btn-ir-celebraciones");
 
 const params = new URLSearchParams(window.location.search);
 const tipoReserva = params.get("tipo");
@@ -34,6 +36,13 @@ if (btnIrRestaurante) {
     });
 }
 
+if (btnIrCelebraciones) {
+    btnIrCelebraciones.addEventListener("click", function (e) {
+        e.preventDefault();
+        mostrarPage("page-celebraciones");
+    });
+}
+
 if (btnVolverInicioHotel) {
     btnVolverInicioHotel.addEventListener("click", function () {
         mostrarPage("page-inicio");
@@ -42,6 +51,12 @@ if (btnVolverInicioHotel) {
 
 if (btnVolverInicioRestaurante) {
     btnVolverInicioRestaurante.addEventListener("click", function () {
+        mostrarPage("page-inicio");
+    });
+}
+
+if (btnVolverInicioCelebraciones) {
+    btnVolverInicioCelebraciones.addEventListener("click", function () {
         mostrarPage("page-inicio");
     });
 }

@@ -65,7 +65,7 @@
                         <a class="btn-reservar btn-lg px-5 py-3" href="#" id="btn-ir-hotel">Reservar Hotel</a>
                     </div>
                     <div class="col-lg-6">
-                        <img src="img/piscina.jfif" alt="Plato de codillo" class="imagen-seccion">
+                        <img src="img/piscina.jfif" alt="Plato de codillo" class="imagen-seccion mx-auto d-block">
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
             <div class="container">
                 <div class="row align-items-center py-5 g-5">
                     <div class="col-lg-6">
-                        <img src="img/tablaaperitivos.jpg" alt="Plato de codillo" class="imagen-seccion">
+                        <img src="img/tablaaperitivos.jpg" alt="Plato de codillo" class="imagen-seccion mx-auto d-block">
                     </div>
                     <div class="col-lg-6 text-center">
                         <h4 class="mb-4">Reservar en el Restaurante</h4>
@@ -90,6 +90,30 @@
                             ¡Pulsa aquí para disfrutar de una experiencia gastronómica tradicional e inolvidable!
                         </p>
                         <a class="btn-reservar btn-lg px-5 py-3" href="#" id="btn-ir-restaurante">Reservar Restaurante</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="separador-linea">
+            <div class="container">
+                <div class="linea-marron"></div>
+            </div>
+        </div>
+
+        <!-- Sección Reservar Celebración -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center py-5 g-5">
+                    <div class="col-lg-6 text-center">
+                        <h4 class="mb-4">Reservar Celebración</h4>
+                        <p class="texto-seccion mb-4">
+                            ¡Pulsa aquí para reservar una celebración inolvidable, acompañado de todos tus seres queridos!
+                        </p>
+                        <a class="btn-reservar btn-lg px-5 py-3" href="#" id="btn-ir-celebraciones">Reservar Celebración</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="img/bodas.png" alt="Plato de codillo" class="imagen-seccion mx-auto d-block">
                     </div>
                 </div>
             </div>
@@ -262,6 +286,105 @@
             </div>
         </section>
     </div>
+
+    <!-- Page Reservar Celebraciones -->
+    <div class="page" id="page-celebraciones">
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <h2 class="text-center mb-4">Solicitar celebración</h2>
+                        <p class="text-center mb-5">
+                            Completa el siguiente formulario para solicitar información sobre tu celebración.
+                        </p>
+                        <div class="form-reserva p-4 p-md-5 shadow-sm bg-white">
+                            <div class="d-flex justify-content-start mb-3">
+                                <button type="button" class="btn btn-reservar" id="btn-volver-inicio-celebraciones">
+                                    Atrás
+                                </button>
+                            </div>
+                            <form>
+                                <div class="row g-4">
+                                    <!-- Nombre -->
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label text-center w-100">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Introduce tu nombre">
+                                    </div>
+    
+                                    <!-- Apellidos -->
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label text-center w-100">Apellidos</label>
+                                        <input type="text" class="form-control" placeholder="Introduce tus apellidos">
+                                    </div>
+    
+                                    <!-- Teléfono -->
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label text-center w-100">Teléfono</label>
+                                        <input type="tel" class="form-control" placeholder="Introduce tu teléfono">
+                                    </div>
+    
+                                    <!-- Tipo celebración -->
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label text-center w-100">Tipo de celebración</label>
+                                        <select class="form-select">
+                                            <option selected disabled>Selecciona una opción</option>
+                                            <option>Boda</option>
+                                            <option>Bautizo</option>
+                                            <option>Comunión</option>
+                                        </select>
+                                    </div>
+    
+                                    <!-- Número personas -->
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label text-center w-100">Número de personas</label>
+                                        <input type="number" class="form-control"
+                                            placeholder="Número aproximado de asistentes">
+                                    </div>
+    
+                                    <!-- Correo -->
+                                    <div class="col-12 col-lg-6">
+                                        <label class="form-label text-center w-100">Correo electrónico</label>
+                                        <input type="email" class="form-control" placeholder="Introduce tu correo">
+                                    </div>
+    
+                                    <!-- Observaciones -->
+                                    <div class="col-12">
+                                        <label class="form-label text-center w-100">Observaciones</label>
+                                        <textarea class="form-control" rows="4"
+                                            placeholder="Indica cualquier detalle que quieras comentar"></textarea>
+                                    </div>
+    
+                                    <!-- Precio -->
+                                    <div class="col-12 pt-3">
+                                        <p class="fs-5 mb-2">
+                                            Precio total estimado: <span id="precio-total">Pendiente de cálculo</span>
+                                        </p>
+                                    </div>
+    
+                                    <!-- Texto -->
+                                    <div class="col-12 text-center">
+                                        <p class="fw-semibold fst-italic">
+                                            Si estás interesado en celebrar tu evento con nosotros, pulsa en el botón
+                                            “Solicitar Reserva”. Recibirás un correo con información para concertar
+                                            una reunión con el equipo del hotel, donde podremos hablar con calma sobre
+                                            los detalles de la celebración y preparar juntos un evento a tu medida.
+                                        </p>
+                                    </div>
+                                    <!-- Botón -->
+                                    <div class="col-12 text-center pt-2">
+                                        <button type="submit" class="btn-reservar px-5 py-3">
+                                            Solicitar Reserva
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Footer -->
     <footer class="footer py-5 bg-dark">
         <div class="container">
