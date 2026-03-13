@@ -20,6 +20,8 @@ if (tipoReserva === "hotel") {
     mostrarPage("page-hotel");
 } else if (tipoReserva === "restaurante") {
     mostrarPage("page-restaurante");
+} else if (tipoReserva === "celebracion") {
+    mostrarPage("page-celebraciones")
 }
 
 if (btnIrHotel) {
