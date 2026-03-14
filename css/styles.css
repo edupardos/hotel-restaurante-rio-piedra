@@ -238,7 +238,7 @@ textarea {
 .form-reserva {
     border: 2px solid #79480C;
     border-radius: 12px;
-    min-height: 500px;
+    height: auto;
 }
 
 .login-imagen {

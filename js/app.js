@@ -7,6 +7,10 @@ const btnVolverInicioCelebraciones = document.getElementById("btn-volver-inicio-
 const btnIrRegistro = document.getElementById("btn-ir-registro");
 const btnIrLogin = document.getElementById("btn-ir-login");
 const btnIrCelebraciones = document.getElementById("btn-ir-celebraciones");
+const btnAdminUsuarios = document.getElementById("btn-admin-usuarios");
+const btnAdminReservas = document.getElementById("btn-admin-reservas");
+const btnVolverAdminInicioUsuarios = document.getElementById("btn-volver-admin-inicio-usuarios");
+const btnVolverAdminInicioReservas = document.getElementById("btn-volver-admin-inicio-reservas");
 
 const params = new URLSearchParams(window.location.search);
 const tipoReserva = params.get("tipo");
@@ -74,5 +78,29 @@ if (btnIrLogin) {
     btnIrLogin.addEventListener("click", function (e) {
         e.preventDefault();
         mostrarPage("page-login");
+    });
+}
+
+if (btnAdminUsuarios) {
+    btnAdminUsuarios.addEventListener("click", function () {
+        mostrarPage("page-admin-usuarios");
+    });
+}
+
+if (btnAdminReservas) {
+    btnAdminReservas.addEventListener("click", function () {
+        mostrarPage("page-admin-reservas");
+    });
+}
+
+if (btnVolverAdminInicioUsuarios) {
+    btnVolverAdminInicioUsuarios.addEventListener("click", function () {
+        mostrarPage("page-admin-inicio");
+    });
+}
+
+if (btnVolverAdminInicioReservas) {
+    btnVolverAdminInicioReservas.addEventListener("click", function () {
+        mostrarPage("page-admin-inicio");
     });
 }
