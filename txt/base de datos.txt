@@ -1,0 +1,101 @@
+CREATE DATABASE hotel_riopiedra;
+USE hotel_riopiedra;
+
+-- =========================================
+-- TABLA USUARIOS
+-- =========================================
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(150) NOT NULL,
+    correo VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20),
+    direccion VARCHAR(255),
+    foto_perfil VARCHAR(255),
+    rol ENUM('usuario', 'admin') NOT NULL DEFAULT 'usuario',
+    fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =========================================
+-- TABLA HABITACIONES
+-- =========================================
+CREATE TABLE habitaciones (
+    id_habitacion INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(100) NOT NULL,
+    precio_noche DECIMAL(10,2) NOT NULL,
+    descripcion VARCHAR(255)
+);
+
+-- =========================================
+-- TABLA RESERVAS HOTEL
+-- =========================================
+CREATE TABLE reservas_hotel (
+    id_reserva_hotel INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_habitacion INT NOT NULL,
+    fecha_entrada DATE NOT NULL,
+    fecha_salida DATE NOT NULL,
+    observaciones TEXT,
+    precio_total DECIMAL(10,2),
+    estado ENUM('pendiente', 'confirmada', 'anulada') NOT NULL DEFAULT 'pendiente',
+    fecha_reserva DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    check_in BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT fk_reserva_hotel_usuario
+        FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_reserva_hotel_habitacion
+        FOREIGN KEY (id_habitacion) REFERENCES habitaciones(id_habitacion)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+-- =========================================
+-- TABLA RESERVAS RESTAURANTE
+-- =========================================
+CREATE TABLE reservas_restaurante (
+    id_reserva_restaurante INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha_hora DATETIME NOT NULL,
+    observaciones TEXT,
+    estado ENUM('pendiente', 'confirmada', 'anulada') NOT NULL DEFAULT 'pendiente',
+    fecha_reserva DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reserva_restaurante_usuario
+        FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- =========================================
+-- TABLA RESERVAS CELEBRACIONES
+-- =========================================
+CREATE TABLE reservas_celebraciones (
+    id_reserva_celebracion INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    tipo_celebracion ENUM('boda', 'bautizo', 'comunion') NOT NULL,
+    num_personas INT NOT NULL,
+    observaciones TEXT,
+    precio_estimado DECIMAL(10,2),
+    estado ENUM('pendiente', 'confirmada', 'anulada') NOT NULL DEFAULT 'pendiente',
+    fecha_reserva DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_reserva_celebracion_usuario
+        FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- =========================================
+-- TIPOS DE HABITACIONES
+-- =========================================
+INSERT INTO habitaciones (tipo, precio_noche, descripcion) VALUES
+('Habitación individual', 60.00, 'Habitación para una persona'),
+('Habitación doble', 90.00, 'Habitación estándar para dos personas'),
+('Habitación doble superior', 120.00, 'Habitación doble con mejores prestaciones'),
+('Suite', 180.00, 'Suite amplia con servicios premium');
+
+-- =========================================
+-- PRIMER USUARIO ADMINISTRADOR
+-- =========================================
+INSERT INTO usuarios (nombre, apellidos, correo, password, telefono, direccion, rol)
+VALUES ('Edu', 'Admin', 'admin@riopiedra.com', '1234', '600000000', 'Nuévalos', 'admin');
