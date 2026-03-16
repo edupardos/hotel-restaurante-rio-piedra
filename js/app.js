@@ -5,6 +5,7 @@ const Toast = Swal.mixin({
     cancelButtonColor: "#6c757d",
     buttonsStyling: true
 });
+
 const pages = document.querySelectorAll(".page");
 const btnIrHotel = document.getElementById("btn-ir-hotel");
 const btnIrRestaurante = document.getElementById("btn-ir-restaurante");
@@ -18,6 +19,7 @@ const btnAdminUsuarios = document.getElementById("btn-admin-usuarios");
 const btnAdminReservas = document.getElementById("btn-admin-reservas");
 const btnVolverAdminInicioUsuarios = document.getElementById("btn-volver-admin-inicio-usuarios");
 const btnVolverAdminInicioReservas = document.getElementById("btn-volver-admin-inicio-reservas");
+const btnPerfilNav = document.getElementById("btn-perfil-nav");
 
 const params = new URLSearchParams(window.location.search);
 const tipoReserva = params.get("tipo");
@@ -115,4 +117,22 @@ if (btnVolverAdminInicioReservas) {
     });
 }
 
+async function comprobarEnlacePerfil() {
+    if (!btnPerfilNav) return;
+
+    try {
+        const respuesta = await fetch("php/sesion_usuario.php");
+        const resultado = await respuesta.json();
+
+        if (resultado.success && resultado.usuario) {
+            btnPerfilNav.setAttribute("href", "perfil.html");
+        } else {
+            btnPerfilNav.setAttribute("href", "loginregistro.html");
+        }
+    } catch (error) {
+        btnPerfilNav.setAttribute("href", "loginregistro.html");
+    }
+}
+
+comprobarEnlacePerfil();
 });

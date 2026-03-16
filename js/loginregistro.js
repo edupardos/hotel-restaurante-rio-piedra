@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const formRegistro = document.getElementById("form-registro");
     const formLogin = document.getElementById("form-login");
+    const bloqueRegistro = document.getElementById("bloque-registro");
 
     const inputLoginCorreo = document.getElementById("login-correo");
     const inputLoginPassword = document.getElementById("login-password");
@@ -14,10 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function crearBotonLogout() {
 
-        if (document.getElementById("btn-logout")) return;
+        if (document.getElementById("contenedor-logout")) return;
 
         const contenedor = document.createElement("div");
         contenedor.className = "text-center mt-4";
+        contenedor.id = "contenedor-logout";
 
         contenedor.innerHTML = `
             <p class="mb-0">Sesión iniciada</p>
@@ -45,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!confirmacion.isConfirmed) return;
 
             try {
-
                 const respuesta = await fetch("php/logout.php", {
                     method: "POST"
                 });
@@ -53,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const resultado = await respuesta.json();
 
                 if (resultado.success) {
-
                     await alerta.fire({
                         icon: "success",
                         title: "Sesión cerrada",
@@ -61,27 +61,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     window.location.href = "loginregistro.html";
-
                 }
-
             } catch (error) {
-
                 alerta.fire({
                     icon: "error",
                     title: "Error",
                     text: "No se pudo cerrar la sesión"
                 });
-
             }
-
         });
+    }
 
+    function ocultarBotonLogout() {
+        const contenedorLogout = document.getElementById("contenedor-logout");
+        if (contenedorLogout) {
+            contenedorLogout.remove();
+        }
     }
 
     async function comprobarSesion() {
 
         try {
-
             const respuesta = await fetch("php/sesion_usuario.php");
             const resultado = await respuesta.json();
 
@@ -92,29 +92,40 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 if (inputLoginPassword) {
-                    inputLoginPassword.placeholder = "********";
+                    inputLoginPassword.value = "********";
+                    inputLoginPassword.disabled = true;
+                }
+
+                if (bloqueRegistro) {
+                    bloqueRegistro.style.display = "none";
                 }
 
                 crearBotonLogout();
 
-            }
+            } else {
 
+                if (inputLoginPassword) {
+                    inputLoginPassword.disabled = false;
+                }
+
+                if (bloqueRegistro) {
+                    bloqueRegistro.style.display = "block";
+                }
+
+                ocultarBotonLogout();
+            }
         } catch (error) {
             console.log("No se pudo comprobar la sesión");
         }
-
     }
 
     if (formRegistro) {
 
         formRegistro.addEventListener("submit", async function (e) {
-
             e.preventDefault();
-
             const datos = new FormData(formRegistro);
 
             try {
-
                 const respuesta = await fetch("php/registro.php", {
                     method: "POST",
                     body: datos
@@ -123,7 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const resultado = await respuesta.json();
 
                 if (resultado.success) {
-
                     await alerta.fire({
                         icon: "success",
                         title: "Registro completado",
@@ -131,41 +141,31 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     window.location.href = "index.html";
-
                 } else {
-
                     alerta.fire({
                         icon: "error",
                         title: "Error en el registro",
                         text: resultado.message
                     });
-
                 }
-
             } catch (error) {
-
                 alerta.fire({
                     icon: "error",
                     title: "Error de conexión",
                     text: "No se ha podido conectar con el servidor"
                 });
-
             }
-
         });
-
     }
 
     if (formLogin) {
 
         formLogin.addEventListener("submit", async function (e) {
-
             e.preventDefault();
 
             const datos = new FormData(formLogin);
 
             try {
-
                 const respuesta = await fetch("php/login.php", {
                     method: "POST",
                     body: datos
@@ -174,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const resultado = await respuesta.json();
 
                 if (resultado.success) {
-
                     await alerta.fire({
                         icon: "success",
                         title: "Inicio de sesión correcto",
@@ -184,29 +183,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.location.href = "index.html";
 
                 } else {
-
                     alerta.fire({
                         icon: "error",
                         title: "Error de inicio de sesión",
                         text: resultado.message
                     });
-
                 }
-
             } catch (error) {
-
                 alerta.fire({
                     icon: "error",
                     title: "Error de conexión",
                     text: "No se ha podido conectar con el servidor"
                 });
-
             }
-
         });
 
         comprobarSesion();
-
     }
-
 });
