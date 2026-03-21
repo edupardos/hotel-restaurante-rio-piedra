@@ -32,7 +32,7 @@
                                 <!-- Formulario login -->
                                 <div class="col-12 col-lg-6 p-4 p-md-5">
                                     <div class="text-center mb-4">
-                                        <a href="index.html">
+                                        <a href="index.php">
                                             <img src="img/logo.png" alt="Logo Hotel Río Piedra" class="mb-3" style="height: 70px;">
                                         </a>
                                         <h5>Acceso de usuario</h5>
@@ -95,7 +95,7 @@
                                 <!-- Formulario registro -->
                                 <div class="col-12 col-lg-6 p-4 p-md-5">
                                     <div class="text-center mb-4">
-                                        <a href="index.html">
+                                        <a href="index.php">
                                             <img src="img/logo.png" alt="Logo Hotel Río Piedra" class="mb-3" style="height:70px;">
                                         </a>
                                         <h5>Registrar usuario</h5>

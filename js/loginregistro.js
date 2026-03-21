@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: "Has cerrado sesión correctamente"
                     });
 
-                    window.location.href = "loginregistro.html";
+                    window.location.href = "loginregistro.php";
                 }
             } catch (error) {
                 alerta.fire({
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: "Usuario registrado correctamente"
                     });
 
-                    window.location.href = "index.html";
+                    window.location.href = "index.php";
                 } else {
                     alerta.fire({
                         icon: "error",
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: "Redirigiendo al inicio..."
                     });
 
-                    window.location.href = "index.html";
+                    window.location.href = "index.php";
 
                 } else {
                     alerta.fire({

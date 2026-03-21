@@ -15,7 +15,7 @@
     <div class="py-3">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="btn-reservar">
+            <a href="index.php" class="btn-reservar">
                 Atrás
             </a>
 
@@ -41,37 +41,37 @@
 
             <div class="form-reserva p-4 p-md-5 shadow-sm bg-white">
 
-                <form id="form-perfil">
+                <form id="form-perfil" enctype="multipart/form-data">
                     <div class="row g-4">
 
                         <div class="col-12 col-lg-6">
                             <label for="perfil-nombre" class="form-label text-center w-100">Nombre</label>
-                            <input type="text" class="form-control" id="perfil-nombre">
+                            <input type="text" class="form-control" id="perfil-nombre" name="nombre">
                         </div>
 
                         <div class="col-12 col-lg-6">
                             <label for="perfil-apellidos" class="form-label text-center w-100">Apellidos</label>
-                            <input type="text" class="form-control" id="perfil-apellidos">
+                            <input type="text" class="form-control" id="perfil-apellidos" name="apellidos">
                         </div>
 
                         <div class="col-12 col-lg-6">
                             <label for="perfil-telefono" class="form-label text-center w-100">Teléfono</label>
-                            <input type="tel" class="form-control" id="perfil-telefono">
+                            <input type="tel" class="form-control" id="perfil-telefono" name="telefono">
                         </div>
 
                         <div class="col-12 col-lg-6">
                             <label for="perfil-foto" class="form-label text-center w-100">Foto de perfil</label>
-                            <input type="file" class="form-control" id="perfil-foto" accept="image/*">
+                            <input type="file" class="form-control" id="perfil-foto" name="foto" accept="image/*">
                         </div>
 
                         <div class="col-12">
                             <label for="perfil-correo" class="form-label text-center w-100">Correo electrónico</label>
-                            <input type="email" class="form-control" id="perfil-correo">
+                            <input type="email" class="form-control" id="perfil-correo" name="correo">
                         </div>
 
                         <div class="col-12">
                             <label for="perfil-direccion" class="form-label text-center w-100">Dirección</label>
-                            <input type="text" class="form-control" id="perfil-direccion">
+                            <input type="text" class="form-control" id="perfil-direccion" name="direccion">
                         </div>
 
                         <div class="col-12 text-center pt-3">
@@ -89,6 +89,10 @@
 
                                 <button type="button" class="btn-reservar px-4 py-3">
                                     Reservas Restaurante
+                                </button>
+
+                                <button type="button" class="btn-reservar px-4 py-3">
+                                    Reservas Celebraciones
                                 </button>
                             </div>
                         </div>

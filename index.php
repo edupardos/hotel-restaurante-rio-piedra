@@ -1,3 +1,6 @@
+<?php
+$paginaActual = 'inicio';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,48 +20,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-linea sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="logo" class="logo-navbar">
-            </a>
-
-            <button class="navbar-toggler boton-menu" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="menuNavbar">
-                <ul class="navbar-nav ms-auto align-items-center gap-3">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="hotel.html">Hotel</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="restaurante.html">Restaurante</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="celebraciones.html">Celebraciones</a>
-                    </li>
-
-                    <li class="nav-item" id="admin-nav-item">
-                        <a href="admin.html" class="nav-link" id="btn-ir-admin">Panel Administrador</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="reservar.html" class="btn-reservar">Reservar</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link" href="loginregistro.html" id="btn-perfil-nav">
-                            <img src="img/usuario.png" alt="perfil" class="icono-perfil">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
     
     <!-- Carrusel -->
     <section class="carousel-section">
@@ -143,7 +105,7 @@
                             Todas con suelos de parquet y duchas estilo vintage...
                         </p>
                         <br>
-                        <a href="hotel.html" class="btn-mas-info">Más información</a>
+                        <a href="hotel.php" class="btn-mas-info">Más información</a>
                     </div>
                 </div>
             </div>
@@ -161,7 +123,7 @@
                             Reconocido en varias ocasiones como mejor restaurante de Zaragoza...
                         </p>
                         <br>
-                        <a href="restaurante.html" class="btn-mas-info">Más información</a>
+                        <a href="restaurante.php" class="btn-mas-info">Más información</a>
                     </div>
                 </div>
             </div>
@@ -179,7 +141,7 @@
                             jardín, terraza y piscina...
                         </p>
                         <br>
-                        <a href="celebraciones.html" class="btn-mas-info">Más información</a>
+                        <a href="celebraciones.php" class="btn-mas-info">Más información</a>
                     </div>
                 </div>
             </div>

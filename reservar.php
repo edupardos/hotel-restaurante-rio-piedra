@@ -1,3 +1,6 @@
+<?php
+$paginaActual = 'reservar';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,44 +19,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-linea sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="logo" class="logo-navbar">
-            </a>
-
-            <button class="navbar-toggler boton-menu" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="menuNavbar">
-                <ul class="navbar-nav ms-auto align-items-center gap-3">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="hotel.html">Hotel</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="restaurante.html">Restaurante</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="celebraciones.html">Celebraciones</a>
-                    </li>
-
-                    <li class="nav-item" id="admin-nav-item">
-                        <a href="admin.html" class="nav-link" id="btn-ir-admin">Panel Administrador</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link" href="loginregistro.html" id="btn-perfil-nav">
-                            <img src="img/usuario.png" alt="perfil" class="icono-perfil">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <!-- Page Principal -->
     <div class="page active" id="page-inicio">
@@ -69,7 +35,7 @@
                         <a class="btn-reservar btn-lg px-5 py-3" href="#" id="btn-ir-hotel">Reservar Hotel</a>
                     </div>
                     <div class="col-lg-6">
-                        <img src="img/piscina.jfif" alt="Plato de codillo" class="imagen-seccion mx-auto d-block">
+                        <img src="img/piscina.jfif" alt="Piscina del hotel" class="imagen-seccion mx-auto d-block">
                     </div>
                 </div>
             </div>
@@ -86,7 +52,7 @@
             <div class="container">
                 <div class="row align-items-center py-5 g-5">
                     <div class="col-lg-6">
-                        <img src="img/tablaaperitivos.jpg" alt="Plato de codillo" class="imagen-seccion mx-auto d-block">
+                        <img src="img/tablaaperitivos.jpg" alt="Aperitivos del restaurante" class="imagen-seccion mx-auto d-block">
                     </div>
                     <div class="col-lg-6 text-center">
                         <h4 class="mb-4">Reservar en el Restaurante</h4>
@@ -117,7 +83,7 @@
                         <a class="btn-reservar btn-lg px-5 py-3" href="#" id="btn-ir-celebraciones">Reservar Celebración</a>
                     </div>
                     <div class="col-lg-6">
-                        <img src="img/bodas.png" alt="Plato de codillo" class="imagen-seccion mx-auto d-block">
+                        <img src="img/bodas.png" alt="Celebración de boda" class="imagen-seccion mx-auto d-block">
                     </div>
                 </div>
             </div>
@@ -201,10 +167,10 @@
                                         <textarea class="form-control" id="observaciones" rows="4" placeholder="Escribe aquí cualquier observación adicional"></textarea>
                                     </div>
 
-                                    <!--Precio total -->
+                                    <!-- Precio total -->
                                     <div class="col-12">
                                         <p class="fs-5 mb-0">
-                                            <strong>Precio total:</strong> <span id="precio-total">Pendiente de cálculo</span>
+                                            <strong>Precio total:</strong> <span id="precio-total-hotel">Pendiente de cálculo</span>
                                         </p>
                                     </div>
 
@@ -279,7 +245,7 @@
                                     <!-- Botón confirmar -->
                                     <div class="col-12 text-center pt-3">
                                         <button type="submit" class="btn-reservar px-5 py-3">
-                                            Confirmar reservar
+                                            Confirmar reserva
                                         </button>
                                     </div>
                                 </div>
@@ -341,8 +307,7 @@
                                     <!-- Número personas -->
                                     <div class="col-12 col-lg-6">
                                         <label class="form-label text-center w-100">Número de personas</label>
-                                        <input type="number" class="form-control"
-                                            placeholder="Número aproximado de asistentes">
+                                        <input type="number" class="form-control" placeholder="Número aproximado de asistentes">
                                     </div>
     
                                     <!-- Correo -->
@@ -354,14 +319,13 @@
                                     <!-- Observaciones -->
                                     <div class="col-12">
                                         <label class="form-label text-center w-100">Observaciones</label>
-                                        <textarea class="form-control" rows="4"
-                                            placeholder="Indica cualquier detalle que quieras comentar"></textarea>
+                                        <textarea class="form-control" rows="4" placeholder="Indica cualquier detalle que quieras comentar"></textarea>
                                     </div>
     
                                     <!-- Precio -->
                                     <div class="col-12 pt-3">
                                         <p class="fs-5 mb-2">
-                                            Precio total estimado: <span id="precio-total">Pendiente de cálculo</span>
+                                            Precio total estimado: <span id="precio-total-celebracion">Pendiente de cálculo</span>
                                         </p>
                                     </div>
     
@@ -374,6 +338,7 @@
                                             los detalles de la celebración y preparar juntos un evento a tu medida.
                                         </p>
                                     </div>
+
                                     <!-- Botón -->
                                     <div class="col-12 text-center pt-2">
                                         <button type="submit" class="btn-reservar px-5 py-3">

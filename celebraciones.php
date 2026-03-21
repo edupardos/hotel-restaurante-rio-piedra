@@ -1,3 +1,6 @@
+<?php
+$paginaActual = 'celebraciones';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,55 +19,14 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-linea sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="logo" class="logo-navbar">
-            </a>
-
-            <button class="navbar-toggler boton-menu" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="menuNavbar">
-                <ul class="navbar-nav ms-auto align-items-center gap-3">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="hotel.html">Hotel</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="restaurante.html">Restaurante</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Celebraciones</a>
-                    </li>
-
-                    <li class="nav-item" id="admin-nav-item">
-                        <a href="admin.html" class="nav-link" id="btn-ir-admin">Panel Administrador</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="reservar.html" class="btn-reservar">Reservar</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link" href="loginregistro.html" id="btn-perfil-nav">
-                            <img src="img/usuario.png" alt="perfil" class="icono-perfil">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <!-- Secciones -->
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <img src="img/bautizo.jfif" alt="Exterior Hotel" class="imagen-seccion mx-auto d-block">
+                    <img src="img/bautizo.jfif" alt="Bautizo" class="imagen-seccion mx-auto d-block">
                 </div>
     
                 <div class="col-lg-6">
@@ -100,7 +62,7 @@
                 </div>
     
                 <div class="col-lg-6">
-                    <img src="img/comunion.jfif" alt="Recepción Hotel" class="imagen-seccion mx-auto d-block">
+                    <img src="img/comunion.jfif" alt="Comunión" class="imagen-seccion mx-auto d-block">
                 </div>
             </div>
         </div>
@@ -116,7 +78,7 @@
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <img src="img/celebraciones.jpeg" alt="Exterior Hotel" class="imagen-seccion mx-auto d-block">
+                    <img src="img/celebraciones.jpeg" alt="Boda" class="imagen-seccion mx-auto d-block">
                 </div>
     
                 <div class="col-lg-6">
@@ -143,7 +105,7 @@
         <div class="container">
             <div class="text-center g-5">
                 <h4>¡Pulsa aquí para reservar tu celebración!</h4>
-                <a href="reservar.html?tipo=celebracion" class="btn-reservar px-5 py-3 fs-5 my-5">Reservar</a>
+                <a href="reservar.php?tipo=celebracion" class="btn-reservar px-5 py-3 fs-5 my-5">Reservar</a>
             </div>
         </div>
     </section>

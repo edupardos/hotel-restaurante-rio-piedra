@@ -125,12 +125,12 @@ async function comprobarEnlacePerfil() {
         const resultado = await respuesta.json();
 
         if (resultado.success && resultado.usuario) {
-            btnPerfilNav.setAttribute("href", "perfil.html");
+            btnPerfilNav.setAttribute("href", "perfil.php");
         } else {
-            btnPerfilNav.setAttribute("href", "loginregistro.html");
+            btnPerfilNav.setAttribute("href", "loginregistro.php");
         }
     } catch (error) {
-        btnPerfilNav.setAttribute("href", "loginregistro.html");
+        btnPerfilNav.setAttribute("href", "loginregistro.php");
     }
 }
 

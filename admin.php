@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    echo "<script>
+        alert('No tienes permisos para acceder al panel administrador');
+        window.location.href='index.php';
+    </script>";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,7 +31,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <!-- Botón Inicio -->
-            <a href="index.html" class="btn-reservar">
+            <a href="index.php" class="btn-reservar">
                 Inicio
             </a>
 
@@ -83,7 +95,6 @@
                             Administrar Usuarios
                         </h5>
                 
-                        <!-- Espacio vacío para equilibrar -->
                         <div style="width:90px;"></div>
                 
                     </div>
@@ -93,7 +104,7 @@
 
                         <!-- Filtros -->
                         <div class="col-md-4">
-                            <select class="form-select" id="row align-items-center mb-4 g-3">
+                            <select class="form-select" id="filtro-tipo-usuario">
                                 <option selected value="todos">Filtrar por tipo de usuario</option>
                                 <option value="usuario">Usuario</option>
                                 <option value="admin">Administrador</option>
@@ -142,7 +153,6 @@
                             Administrar Reservas
                         </h5>
                 
-                        <!-- Espacio vacío para equilibrar -->
                         <div style="width:90px;"></div>
                         
                     </div>

@@ -26,7 +26,7 @@ async function cargarPerfil() {
                     text: "Debes iniciar sesión para acceder a tu perfil"
                 });
 
-                window.location.href = "loginregistro.html";
+                window.location.href = "loginregistro.php";
                 return;
             }
 
