@@ -1,6 +1,6 @@
 <?php
 session_start();
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 
 require_once 'conexion.php';
 
@@ -37,7 +37,11 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 }
 
 try {
-    $sqlCorreo = "SELECT id_usuario FROM usuarios WHERE correo = :correo AND id_usuario != :id_usuario";
+    $sqlCorreo = "SELECT id_usuario 
+                  FROM usuarios 
+                  WHERE correo = :correo 
+                  AND id_usuario != :id_usuario";
+
     $stmtCorreo = $conexion->prepare($sqlCorreo);
     $stmtCorreo->bindParam(':correo', $correo);
     $stmtCorreo->bindParam(':id_usuario', $idUsuario, PDO::PARAM_INT);
@@ -54,17 +58,24 @@ try {
     $fotoPerfil = null;
 
     if (isset($_FILES['foto_perfil']) && $_FILES['foto_perfil']['error'] === 0) {
-        $carpetaDestino = "../img/perfiles/";
+        $carpetaDestino = "../img/perfil/";
 
         if (!is_dir($carpetaDestino)) {
             mkdir($carpetaDestino, 0777, true);
         }
 
-        $nombreArchivo = time() . "_" . basename($_FILES['foto_perfil']['name']);
+        $extension = pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION);
+        $nombreArchivo = "perfil_" . $idUsuario . "_" . time() . "." . strtolower($extension);
         $rutaFinal = $carpetaDestino . $nombreArchivo;
 
         if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $rutaFinal)) {
-            $fotoPerfil = "img/perfiles/" . $nombreArchivo;
+            $fotoPerfil = $nombreArchivo;
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'No se pudo guardar la imagen'
+            ]);
+            exit;
         }
     }
 
@@ -104,9 +115,14 @@ try {
     $_SESSION['apellidos'] = $apellidos;
     $_SESSION['correo'] = $correo;
 
+    if ($fotoPerfil !== null) {
+        $_SESSION['foto_perfil'] = $fotoPerfil;
+    }
+
     echo json_encode([
         'success' => true,
-        'message' => 'Perfil actualizado correctamente'
+        'message' => 'Perfil actualizado correctamente',
+        'foto_perfil' => $fotoPerfil
     ]);
 
 } catch (PDOException $e) {

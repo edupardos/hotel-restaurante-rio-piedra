@@ -42,6 +42,11 @@
             <div class="form-reserva p-4 p-md-5 shadow-sm bg-white">
 
                 <form id="form-perfil" enctype="multipart/form-data">
+
+                    <div class="col-12 text-center mb-4">
+                        <img id="preview-foto-perfil" src="img/perfil/default.png" alt="Foto de perfil" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 2px solid #ccc;">
+                    </div>
+
                     <div class="row g-4">
 
                         <div class="col-12 col-lg-6">
@@ -67,6 +72,11 @@
                         <div class="col-12">
                             <label for="perfil-correo" class="form-label text-center w-100">Correo electrónico</label>
                             <input type="email" class="form-control" id="perfil-correo" name="correo">
+
+                            <p class="text-center mt-2 mb-0">
+                                ¿Quieres acceder con otra cuenta?
+                                <a href="loginregistro.php" class="text-decoration-none">Iniciar sesión</a>
+                            </p>
                         </div>
 
                         <div class="col-12">
@@ -80,23 +90,23 @@
                             </button>
                         </div>
 
-                        <div class="col-12 pt-3">
-                            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <div class="col-12 pt-4">
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
 
-                                <button type="button" class="btn-reservar px-4 py-3">
+                                <button type="button" class="btn-reservas-perfil">
                                     Reservas Hotel
                                 </button>
 
-                                <button type="button" class="btn-reservar px-4 py-3">
+                                <button type="button" class="btn-reservas-perfil">
                                     Reservas Restaurante
                                 </button>
 
-                                <button type="button" class="btn-reservar px-4 py-3">
+                                <button type="button" class="btn-reservas-perfil">
                                     Reservas Celebraciones
                                 </button>
+
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>

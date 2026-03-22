@@ -28,7 +28,14 @@ try {
     if ($usuario) {
         echo json_encode([
             'success' => true,
-            'usuario' => $usuario
+            'usuario' => [
+                'nombre' => $usuario['nombre'] ?? '',
+                'apellidos' => $usuario['apellidos'] ?? '',
+                'telefono' => $usuario['telefono'] ?? '',
+                'foto_perfil' => $usuario['foto_perfil'] ?? '',
+                'correo' => $usuario['correo'] ?? '',
+                'direccion' => $usuario['direccion'] ?? ''
+            ]
         ]);
     } else {
         echo json_encode([
@@ -40,7 +47,7 @@ try {
 } catch (PDOException $e) {
     echo json_encode([
         'success' => false,
-        'message' => 'Error al obtener el perfil: ' . $e->getMessage()
+        'message' => 'Error al obtener el perfil'
     ]);
 }
 ?>

@@ -24,7 +24,7 @@ if (empty($correo) || empty($password)) {
 }
 
 try {
-    $sql = "SELECT id_usuario, nombre, apellidos, correo, password, rol
+    $sql = "SELECT id_usuario, nombre, apellidos, correo, password, rol, foto_perfil
             FROM usuarios
             WHERE correo = :correo";
 
@@ -55,6 +55,7 @@ try {
     $_SESSION['apellidos'] = $usuario['apellidos'];
     $_SESSION['correo'] = $usuario['correo'];
     $_SESSION['rol'] = $usuario['rol'];
+    $_SESSION['foto_perfil'] = $usuario['foto_perfil'] ?? '';
 
     echo json_encode([
         'success' => true,

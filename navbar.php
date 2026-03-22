@@ -8,12 +8,19 @@ $linkPerfil = 'loginregistro.php';
 $mostrarAdmin = false;
 
 if (isset($_SESSION['id_usuario'])) {
-    $iconoPerfil = 'img/usuario.png';
     $linkPerfil = 'perfil.php';
 
+    if (!empty($_SESSION['foto_perfil'])) {
+        $iconoPerfil = 'img/perfil/' . $_SESSION['foto_perfil'];
+    } else {
+        if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin') {
+            $iconoPerfil = 'img/admin.png';
+        } else {
+            $iconoPerfil = 'img/usuario.png';
+        }
+    }
+
     if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin') {
-        $iconoPerfil = 'img/admin.png';
-        $linkPerfil = 'admin.php';
         $mostrarAdmin = true;
     }
 }
