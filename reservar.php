@@ -206,40 +206,46 @@ $paginaActual = 'reservar';
                                 </button>
                             </div>
 
-                            <form>
+                            <form id="form-reserva-restaurante">
                                 <div class="row g-4">
                                     <!-- Nombre y apellidos -->
                                     <div class="col-12 col-lg-6">
                                         <label for="nombreRest" class="form-label text-center w-100">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Introduce tu nombre" id="nombreRest">
+                                        <input type="text" class="form-control" placeholder="Introduce tu nombre" id="nombreRest" name="nombre">
                                     </div>
 
                                     <div class="col-12 col-lg-6">
                                         <label for="apellidosRest" class="form-label text-center w-100">Apellidos</label>
-                                        <input type="text" class="form-control" placeholder="Introduce tus apellidos" id="apellidosRest">
+                                        <input type="text" class="form-control" placeholder="Introduce tus apellidos" id="apellidosRest" name="apellidos">
                                     </div>
 
                                     <!-- Teléfono y fecha -->
                                     <div class="col-12 col-lg-6">
                                         <label for="telefonoRest" class="form-label text-center w-100">Teléfono</label>
-                                        <input type="tel" class="form-control" placeholder="Introduce tu teléfono" id="telefonoRest">
+                                        <input type="tel" class="form-control" placeholder="Introduce tu teléfono" id="telefonoRest" name="telefono">
                                     </div>
 
                                     <div class="col-12 col-lg-6">
                                         <label for="fechaHoraRest" class="form-label text-center w-100">Fecha y hora de la reserva</label>
-                                        <input type="datetime-local" class="form-control" id="fechaHoraRest">
+                                        <input type="datetime-local" class="form-control" id="fechaHoraRest" name="fecha_hora">
+                                    </div>
+
+                                    <!-- Número de personas -->
+                                    <div class="col-12 col-lg-6">
+                                        <label for="numPersonasRest" class="form-label text-center w-100">Número de personas</label>
+                                        <input type="number" class="form-control" placeholder="Introduce el número de personas" id="numPersonasRest" name="num_personas" min="1">
                                     </div>
 
                                     <!-- Correo electrónico -->
-                                    <div class="col-12">
+                                    <div class="col-12 col-lg-6">
                                         <label for="correoRest" class="form-label text-center w-100">Correo electrónico</label>
-                                        <input type="email" class="form-control" placeholder="Introduce tu correo electrónico" id="correoRest">
+                                        <input type="email" class="form-control" placeholder="Introduce tu correo electrónico" id="correoRest" name="correo">
                                     </div>
 
                                     <!-- Observaciones -->
                                     <div class="col-12">
                                         <label for="observacionesRest" class="form-label text-center w-100">Observaciones (opcional)</label>
-                                        <textarea class="form-control" placeholder="Escribe aquí cualquier observación adicional" id="observacionesRest" rows="4"></textarea>
+                                        <textarea class="form-control" placeholder="Escribe aquí cualquier observación adicional" id="observacionesRest" name="observaciones" rows="4"></textarea>
                                     </div>
 
                                     <!-- Botón confirmar -->

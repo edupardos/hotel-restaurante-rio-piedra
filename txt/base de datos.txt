@@ -58,6 +58,7 @@ CREATE TABLE reservas_restaurante (
     id_reserva_restaurante INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     fecha_hora DATETIME NOT NULL,
+    num_personas INT NOT NULL,
     observaciones TEXT,
     estado ENUM('pendiente', 'confirmada', 'anulada') NOT NULL DEFAULT 'pendiente',
     fecha_reserva DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -74,6 +75,7 @@ CREATE TABLE reservas_celebraciones (
     id_reserva_celebracion INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     tipo_celebracion ENUM('boda', 'bautizo', 'comunion') NOT NULL,
+    fecha_celebracion DATE NOT NULL,
     num_personas INT NOT NULL,
     observaciones TEXT,
     precio_estimado DECIMAL(10,2),
@@ -99,3 +101,8 @@ INSERT INTO habitaciones (tipo, precio_noche, descripcion) VALUES
 -- =========================================
 INSERT INTO usuarios (nombre, apellidos, correo, password, telefono, direccion, rol)
 VALUES ('Edu', 'Admin', 'admin@riopiedra.com', '1234', '600000000', 'Nuévalos', 'admin');
+
+-- =========================================
+-- CONTRASEÑA DE APLICACIÓN
+-- =========================================
+bdzi zxtc mxrb pvxt
