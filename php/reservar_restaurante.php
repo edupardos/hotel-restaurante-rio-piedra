@@ -64,6 +64,16 @@ if (!$fechaReserva) {
     exit;
 }
 
+$ahora = new DateTime();
+
+if ($fechaReserva < $ahora) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'No puedes realizar una reserva en una fecha y hora anteriores a la actual'
+    ]);
+    exit;
+}
+
 $fechaHoraSQL = $fechaReserva->format('Y-m-d H:i:s');
 
 try {
@@ -80,7 +90,6 @@ try {
 
     $stmt->execute();
 
-    // ENVÍO DEL CORREO DESPUÉS DE GUARDAR LA RESERVA
     $asunto = "Solicitud de reserva recibida - Restaurante";
 
     $mensaje = "
@@ -91,7 +100,7 @@ try {
             <li><strong>Fecha y hora:</strong> $fechaHoraSQL</li>
             <li><strong>Número de personas:</strong> $num_personas</li>
         </ul>
-        <p>Esto es un correo de confirmación, porfavor, no contestes a este correo.</p>
+        <p>Esto es un correo de confirmación, por favor, no contestes a este correo.</p>
         <p>Gracias por confiar en nosotros.</p>
     ";
 

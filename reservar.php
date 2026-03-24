@@ -108,73 +108,65 @@ $paginaActual = 'reservar';
                                 </button>
                             </div>
 
-                            <form>
+                            <form id="form-reserva-hotel">
                                 <div class="row g-4">
-                                    <!-- Nombre y apellidos -->
                                     <div class="col-12 col-lg-6">
-                                        <label for="nombre" class="form-label text-center w-100">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" placeholder="Introduce tu nombre">
+                                        <label for="nombreHotel" class="form-label text-center w-100">Nombre</label>
+                                        <input type="text" class="form-control" id="nombreHotel" name="nombre" placeholder="Introduce tu nombre">
                                     </div>
 
                                     <div class="col-12 col-lg-6">
-                                        <label for="apellidos" class="form-label text-center w-100">Apellidos</label>
-                                        <input type="text" class="form-control" id="apellidos" placeholder="Introduce tus apellidos">
+                                        <label for="apellidosHotel" class="form-label text-center w-100">Apellidos</label>
+                                        <input type="text" class="form-control" id="apellidosHotel" name="apellidos" placeholder="Introduce tus apellidos">
                                     </div>
 
-                                    <!-- Teléfono y tipo de habitación -->
                                     <div class="col-12 col-lg-6">
-                                        <label for="telefono" class="form-label text-center w-100">Teléfono</label>
-                                        <input type="tel" class="form-control" id="telefono" placeholder="Introduce tu teléfono">
+                                        <label for="telefonoHotel" class="form-label text-center w-100">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefonoHotel" name="telefono" placeholder="Introduce tu teléfono">
                                     </div>
 
                                     <div class="col-12 col-lg-6">
                                         <label for="tipoHabitacion" class="form-label text-center w-100">Tipo de habitación</label>
-                                        <select class="form-select" id="tipoHabitacion">
-                                            <option selected disabled>Selecciona una opción</option>
-                                            <option>Habitación individual</option>
-                                            <option>Habitación doble</option>
-                                            <option>Habitación doble superior</option>
-                                            <option>Suite</option>
+                                        <select class="form-select" id="tipoHabitacion" name="tipo_habitacion">
+                                            <option value="" selected disabled>Selecciona una opción</option>
+                                            <option value="individual">Habitación individual</option>
+                                            <option value="doble">Habitación doble</option>
+                                            <option value="doble_superior">Habitación doble superior</option>
+                                            <option value="suite">Suite</option>
                                         </select>
                                     </div>
 
-                                    <!-- Correo electrónico -->
                                     <div class="col-12">
-                                        <label for="correo" class="form-label text-center w-100">Correo electrónico</label>
-                                        <input type="email" class="form-control" id="correo" placeholder="Introduce tu correo electrónico">
+                                        <label for="correoHotel" class="form-label text-center w-100">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="correoHotel" name="correo" placeholder="Introduce tu correo electrónico">
                                     </div>
 
-                                    <!-- Dirección -->
                                     <div class="col-12">
-                                        <label for="direccion" class="form-label text-center w-100">Dirección</label>
-                                        <input type="text" class="form-control" id="direccion" placeholder="Introduce tu dirección">
+                                        <label for="direccionHotel" class="form-label text-center w-100">Dirección</label>
+                                        <input type="text" class="form-control" id="direccionHotel" name="direccion" placeholder="Introduce tu dirección">
                                     </div>
 
-                                    <!-- Fechas -->
                                     <div class="col-12 col-lg-6">
                                         <label for="fechaEntrada" class="form-label text-center w-100">Fecha de entrada</label>
-                                        <input type="date" class="form-control" id="fechaEntrada">
+                                        <input type="date" class="form-control" id="fechaEntrada" name="fecha_entrada">
                                     </div>
 
                                     <div class="col-12 col-lg-6">
                                         <label for="fechaSalida" class="form-label text-center w-100">Fecha de salida</label>
-                                        <input type="date" class="form-control" id="fechaSalida">
+                                        <input type="date" class="form-control" id="fechaSalida" name="fecha_salida">
                                     </div>
 
-                                    <!-- Observaciones -->
                                     <div class="col-12">
-                                        <label for="observaciones" class="form-label text-center w-100">Observaciones (opcional)</label>
-                                        <textarea class="form-control" id="observaciones" rows="4" placeholder="Escribe aquí cualquier observación adicional"></textarea>
+                                        <label for="observacionesHotel" class="form-label text-center w-100">Observaciones (opcional)</label>
+                                        <textarea class="form-control" id="observacionesHotel" name="observaciones" rows="4" placeholder="Escribe aquí cualquier observación adicional"></textarea>
                                     </div>
 
-                                    <!-- Precio total -->
                                     <div class="col-12">
                                         <p class="fs-5 mb-0">
                                             <strong>Precio total:</strong> <span id="precio-total-hotel">Pendiente de cálculo</span>
                                         </p>
                                     </div>
 
-                                    <!-- Botón confirmar reserva -->
                                     <div class="col-12 d-flex flex-column flex-md-row justify-content-center gap-3 pt-3">
                                         <button type="submit" class="btn-reservar px-5 py-3 fs-5">
                                             Confirmar Reserva
