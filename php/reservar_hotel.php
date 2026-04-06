@@ -98,14 +98,25 @@ if ($num_noches <= 0) {
 }
 
 try {
-    $sqlHabitacion = "SELECT id_habitacion, precio_noche 
-                      FROM habitaciones 
-                      WHERE tipo = :tipo 
-                      ORDER BY id_habitacion ASC 
-                      LIMIT 1";
+    $sqlHabitacionDisponible = "
+        SELECT h.id_habitacion, h.precio_noche
+        FROM habitaciones h
+        WHERE h.tipo = :tipo
+          AND h.id_habitacion NOT IN (
+              SELECT rh.id_habitacion
+              FROM reservas_hotel rh
+              WHERE rh.estado != 'anulada'
+                AND rh.fecha_entrada < :fecha_salida
+                AND rh.fecha_salida > :fecha_entrada
+          )
+        ORDER BY h.id_habitacion ASC
+        LIMIT 1
+    ";
 
-    $stmtHabitacion = $conexion->prepare($sqlHabitacion);
+    $stmtHabitacion = $conexion->prepare($sqlHabitacionDisponible);
     $stmtHabitacion->bindParam(':tipo', $tipo_habitacion, PDO::PARAM_STR);
+    $stmtHabitacion->bindParam(':fecha_entrada', $fecha_entrada, PDO::PARAM_STR);
+    $stmtHabitacion->bindParam(':fecha_salida', $fecha_salida, PDO::PARAM_STR);
     $stmtHabitacion->execute();
 
     $habitacion = $stmtHabitacion->fetch(PDO::FETCH_ASSOC);
@@ -113,7 +124,7 @@ try {
     if (!$habitacion) {
         echo json_encode([
             'success' => false,
-            'message' => 'No se ha encontrado una habitación del tipo seleccionado'
+            'message' => 'No hay habitaciones disponibles del tipo seleccionado para las fechas indicadas'
         ]);
         exit;
     }
@@ -137,6 +148,14 @@ try {
 
     $stmtReserva->execute();
 
+    $tipo_habitacion_mostrar = match ($tipo_habitacion) {
+        'individual' => 'Habitación individual',
+        'doble' => 'Habitación doble',
+        'doble_superior' => 'Habitación doble superior',
+        'suite' => 'Suite',
+        default => $tipo_habitacion
+    };
+
     $asunto = "Solicitud de reserva recibida - Hotel";
 
     $mensaje = "
@@ -144,7 +163,8 @@ try {
         <p>Hola <strong>$nombre</strong>,</p>
         <p>Hemos recibido tu reserva en el <strong>Hotel Río Piedra</strong>.</p>
         <ul>
-            <li><strong>Tipo de habitación:</strong> $tipo_habitacion</li>
+            <li><strong>Tipo de habitación:</strong> $tipo_habitacion_mostrar</li>
+            <li><strong>Habitación asignada:</strong> $id_habitacion</li>
             <li><strong>Fecha de entrada:</strong> $fecha_entrada</li>
             <li><strong>Fecha de salida:</strong> $fecha_salida</li>
             <li><strong>Número de noches:</strong> $num_noches</li>

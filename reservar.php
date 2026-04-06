@@ -271,62 +271,68 @@ $paginaActual = 'reservar';
                                     Atrás
                                 </button>
                             </div>
-                            <form>
+                            <form id="form-reserva-celebracion">
                                 <div class="row g-4">
                                     <!-- Nombre -->
                                     <div class="col-12 col-lg-6">
-                                        <label class="form-label text-center w-100">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Introduce tu nombre">
+                                        <label for="nombreCelebracion" class="form-label text-center w-100">Nombre</label>
+                                        <input type="text" class="form-control" id="nombreCelebracion" name="nombre" placeholder="Introduce tu nombre">
                                     </div>
-    
+
                                     <!-- Apellidos -->
                                     <div class="col-12 col-lg-6">
-                                        <label class="form-label text-center w-100">Apellidos</label>
-                                        <input type="text" class="form-control" placeholder="Introduce tus apellidos">
+                                        <label for="apellidosCelebracion" class="form-label text-center w-100">Apellidos</label>
+                                        <input type="text" class="form-control" id="apellidosCelebracion" name="apellidos" placeholder="Introduce tus apellidos">
                                     </div>
-    
+
                                     <!-- Teléfono -->
                                     <div class="col-12 col-lg-6">
-                                        <label class="form-label text-center w-100">Teléfono</label>
-                                        <input type="tel" class="form-control" placeholder="Introduce tu teléfono">
+                                        <label for="telefonoCelebracion" class="form-label text-center w-100">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefonoCelebracion" name="telefono" placeholder="Introduce tu teléfono">
                                     </div>
-    
+
                                     <!-- Tipo celebración -->
                                     <div class="col-12 col-lg-6">
-                                        <label class="form-label text-center w-100">Tipo de celebración</label>
-                                        <select class="form-select">
-                                            <option selected disabled>Selecciona una opción</option>
-                                            <option>Boda</option>
-                                            <option>Bautizo</option>
-                                            <option>Comunión</option>
+                                        <label for="tipoCelebracion" class="form-label text-center w-100">Tipo de celebración</label>
+                                        <select class="form-select" id="tipoCelebracion" name="tipo_celebracion">
+                                            <option value="" selected disabled>Selecciona una opción</option>
+                                            <option value="boda">Boda</option>
+                                            <option value="bautizo">Bautizo</option>
+                                            <option value="comunion">Comunión</option>
                                         </select>
                                     </div>
-    
+
+                                    <!-- Fecha celebración -->
+                                    <div class="col-12 col-lg-6">
+                                        <label for="fechaCelebracion" class="form-label text-center w-100">Fecha de la celebración</label>
+                                        <input type="date" class="form-control" id="fechaCelebracion" name="fecha_celebracion">
+                                    </div>
+
                                     <!-- Número personas -->
                                     <div class="col-12 col-lg-6">
-                                        <label class="form-label text-center w-100">Número de personas</label>
-                                        <input type="number" class="form-control" placeholder="Número aproximado de asistentes">
+                                        <label for="numPersonasCelebracion" class="form-label text-center w-100">Número de personas</label>
+                                        <input type="number" class="form-control" id="numPersonasCelebracion" name="num_personas" placeholder="Número aproximado de asistentes" min="1">
                                     </div>
-    
+
                                     <!-- Correo -->
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label text-center w-100">Correo electrónico</label>
-                                        <input type="email" class="form-control" placeholder="Introduce tu correo">
+                                    <div class="col-12">
+                                        <label for="correoCelebracion" class="form-label text-center w-100">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="correoCelebracion" name="correo" placeholder="Introduce tu correo">
                                     </div>
-    
+
                                     <!-- Observaciones -->
                                     <div class="col-12">
-                                        <label class="form-label text-center w-100">Observaciones</label>
-                                        <textarea class="form-control" rows="4" placeholder="Indica cualquier detalle que quieras comentar"></textarea>
+                                        <label for="observacionesCelebracion" class="form-label text-center w-100">Observaciones</label>
+                                        <textarea class="form-control" id="observacionesCelebracion" name="observaciones" rows="4" placeholder="Indica cualquier detalle que quieras comentar"></textarea>
                                     </div>
-    
+
                                     <!-- Precio -->
                                     <div class="col-12 pt-3">
                                         <p class="fs-5 mb-2">
                                             Precio total estimado: <span id="precio-total-celebracion">Pendiente de cálculo</span>
                                         </p>
                                     </div>
-    
+
                                     <!-- Texto -->
                                     <div class="col-12 text-center">
                                         <p class="fw-semibold fst-italic">

@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const tipoHabitacion = document.getElementById("tipoHabitacion");
     const precioTotalHotel = document.getElementById("precio-total-hotel");
 
+    const formReservaCelebracion = document.getElementById("form-reserva-celebracion");
+    const fechaCelebracion = document.getElementById("fechaCelebracion");
+    const tipoCelebracion = document.getElementById("tipoCelebracion");
+    const numPersonasCelebracion = document.getElementById("numPersonasCelebracion");
+    const precioTotalCelebracion = document.getElementById("precio-total-celebracion");
+
     const params = new URLSearchParams(window.location.search);
     const tipoReserva = params.get("tipo");
 
@@ -103,6 +109,41 @@ document.addEventListener("DOMContentLoaded", function () {
             precioTotalHotel.textContent = `${total.toFixed(2)} €`;
         } else {
             precioTotalHotel.textContent = "Pendiente de cálculo";
+        }
+    }
+
+    function obtenerPrecioCelebracion(tipo, numPersonas) {
+        let precioBase = 0;
+
+        switch (tipo) {
+            case "boda":
+                precioBase = 120;
+                break;
+            case "bautizo":
+                precioBase = 70;
+                break;
+            case "comunion":
+                precioBase = 85;
+                break;
+            default:
+                precioBase = 0;
+        }
+
+        return precioBase * numPersonas;
+    }
+
+    function actualizarPrecioCelebracion() {
+        if (!precioTotalCelebracion) return;
+
+        const tipo = tipoCelebracion ? tipoCelebracion.value : "";
+        const personas = numPersonasCelebracion ? parseInt(numPersonasCelebracion.value) || 0 : 0;
+
+        const total = obtenerPrecioCelebracion(tipo, personas);
+
+        if (tipo && personas > 0 && total > 0) {
+            precioTotalCelebracion.textContent = `${total.toFixed(2)} €`;
+        } else {
+            precioTotalCelebracion.textContent = "Pendiente de cálculo";
         }
     }
 
@@ -245,9 +286,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Restringir fecha mínima en celebraciones
+    if (fechaCelebracion) {
+        fechaCelebracion.min = obtenerFechaActual();
+    }
+
     if (tipoHabitacion) {
         tipoHabitacion.addEventListener("change", function () {
             actualizarPrecioHotel();
+        });
+    }
+
+    if (tipoCelebracion) {
+        tipoCelebracion.addEventListener("change", function () {
+            actualizarPrecioCelebracion();
+        });
+    }
+
+    if (numPersonasCelebracion) {
+        numPersonasCelebracion.addEventListener("input", function () {
+            actualizarPrecioCelebracion();
         });
     }
 
@@ -335,6 +393,75 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon: "error",
                     title: "Error",
                     text: "No se pudo procesar la reserva del hotel",
+                    confirmButtonColor: "#79480C"
+                });
+            }
+        });
+    }
+
+    // Reservas celebraciones
+    if (formReservaCelebracion) {
+        formReservaCelebracion.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (fechaCelebracion && fechaCelebracion.value) {
+                const fechaSeleccionada = new Date(fechaCelebracion.value);
+                const hoy = new Date();
+                hoy.setHours(0, 0, 0, 0);
+
+                if (fechaSeleccionada < hoy) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Fecha no válida",
+                        text: "No puedes solicitar una celebración en una fecha anterior a la actual",
+                        confirmButtonColor: "#79480C"
+                    });
+                    return;
+                }
+            }
+
+            const formData = new FormData(formReservaCelebracion);
+
+            try {
+                const response = await fetch("php/reservar_celebracion.php", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    await Swal.fire({
+                        icon: "success",
+                        title: "Solicitud enviada",
+                        text: data.message,
+                        confirmButtonColor: "#79480C"
+                    });
+
+                    formReservaCelebracion.reset();
+
+                    if (fechaCelebracion) {
+                        fechaCelebracion.min = obtenerFechaActual();
+                    }
+
+                    if (precioTotalCelebracion) {
+                        precioTotalCelebracion.textContent = "Pendiente de cálculo";
+                    }
+
+                    mostrarPage("page-inicio");
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: data.message,
+                        confirmButtonColor: "#79480C"
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No se pudo procesar la solicitud de celebración",
                     confirmButtonColor: "#79480C"
                 });
             }
