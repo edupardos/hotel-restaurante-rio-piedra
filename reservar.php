@@ -416,6 +416,8 @@ $paginaActual = 'reservar';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/reservas.js"></script>
 </body>
 </html>
