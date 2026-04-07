@@ -47,6 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function mostrarLoader() {
+        const loader = document.getElementById("loader-overlay");
+        if (loader) {
+            loader.classList.remove("d-none");
+        }
+    }
+
+    function ocultarLoader() {
+        const loader = document.getElementById("loader-overlay");
+        if (loader) {
+            loader.classList.add("d-none");
+        }
+    }
+
     function obtenerFechaHoraLocalActual() {
         const ahora = new Date();
         const year = ahora.getFullYear();
@@ -351,6 +365,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const formData = new FormData(formReservaHotel);
 
+            mostrarLoader();
+
             try {
                 const response = await fetch("php/reservar_hotel.php", {
                     method: "POST",
@@ -360,6 +376,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const data = await response.json();
 
                 if (data.success) {
+
+                    ocultarLoader();
+
                     await Swal.fire({
                         icon: "success",
                         title: "Reserva realizada",
@@ -380,7 +399,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
                     mostrarPage("page-inicio");
+
                 } else {
+
+                    ocultarLoader();
+
                     Swal.fire({
                         icon: "error",
                         title: "Error",
@@ -388,7 +411,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         confirmButtonColor: "#79480C"
                     });
                 }
+
             } catch (error) {
+
+                ocultarLoader();
+
                 Swal.fire({
                     icon: "error",
                     title: "Error",
@@ -422,6 +449,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const formData = new FormData(formReservaCelebracion);
 
+            mostrarLoader();
+
             try {
                 const response = await fetch("php/reservar_celebracion.php", {
                     method: "POST",
@@ -431,6 +460,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const data = await response.json();
 
                 if (data.success) {
+                    ocultarLoader();
+
                     await Swal.fire({
                         icon: "success",
                         title: "Solicitud enviada",
@@ -450,6 +481,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     mostrarPage("page-inicio");
                 } else {
+                    ocultarLoader();
+
                     Swal.fire({
                         icon: "error",
                         title: "Error",
@@ -458,6 +491,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 }
             } catch (error) {
+                ocultarLoader();
+
                 Swal.fire({
                     icon: "error",
                     title: "Error",
@@ -490,6 +525,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const formData = new FormData(formReservaRestaurante);
 
+            mostrarLoader();
+
             try {
                 const response = await fetch("php/reservar_restaurante.php", {
                     method: "POST",
@@ -499,6 +536,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const data = await response.json();
 
                 if (data.success) {
+                    ocultarLoader();
+
                     await Swal.fire({
                         icon: "success",
                         title: "Reserva realizada",
@@ -514,6 +553,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     mostrarPage("page-inicio");
                 } else {
+                    ocultarLoader();
+
                     Swal.fire({
                         icon: "error",
                         title: "Error",
@@ -522,6 +563,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 }
             } catch (error) {
+                ocultarLoader();
+
                 Swal.fire({
                     icon: "error",
                     title: "Error",

@@ -405,6 +405,15 @@ $paginaActual = 'reservar';
         </div>
     </footer>
 
+    <div id="loader-overlay" class="loader-overlay d-none">
+        <div class="text-center">
+            <div class="spinner-border text-light" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-3 mb-0 text-white fw-semibold">Cargando...</p>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/app.js"></script>
