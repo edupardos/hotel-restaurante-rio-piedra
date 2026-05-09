@@ -130,6 +130,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Correo</th>
+                                    <th>Tipo de Usuario</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -208,5 +209,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>
