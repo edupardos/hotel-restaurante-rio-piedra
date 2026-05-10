@@ -240,15 +240,37 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${reserva.fechas}
                     </td>
 
+                    <td>
+                        ${reserva.estado}
+                    </td>
+
                     <td class="text-center">
 
+                      ${reserva.estado !== "confirmada" && reserva.estado !== "anulada"
+                        ? `
                         <button
+                          class="btn btn-success btn-sm btn-confirmar-reserva"
+                          data-id="${reserva.id_reserva}"
+                          data-tipo="${reserva.tipo}">
+                          ${reserva.tipo === "hotel"
+                            ? "Check in"
+                            : "Confirmar"}
+                        </button>
+                        `
+                        : ""
+                        }
+
+                        ${reserva.estado !== "anulada"
+                          ? `
+                          <button
                             class="btn btn-danger btn-sm btn-cancelar-reserva"
                             data-id="${reserva.id_reserva}"
                             data-tipo="${reserva.tipo}">
                             Cancelar
-                        </button>
-
+                          </button>
+                          `
+                          : ""
+                        }
                     </td>
 
                 </tr>
@@ -263,6 +285,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // EVENTOS RESERVAS
   function agregarEventosReservas() {
+
+    // CONFIRMAR RESERVA
+    document.querySelectorAll(".btn-confirmar-reserva").forEach((boton) => {
+      boton.addEventListener("click", async () => {
+
+        const idReserva = boton.dataset.id;
+        const tipo = boton.dataset.tipo;
+
+        const confirmacion = await Swal.fire({
+          title: "¿Confirmar reserva?",
+          text: "La reserva pasará a confirmada",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#79480C",
+          cancelButtonColor: "#6c757d",
+          confirmButtonText: "Sí, confirmar",
+          cancelButtonText: "Cancelar",
+        });
+
+        if (!confirmacion.isConfirmed) return;
+
+        const response = await fetch("php/confirmar_reserva_admin.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id_reserva: idReserva,
+            tipo: tipo,
+          }),
+        });
+
+        const data = await response.json();
+
+        Swal.fire({
+          icon: data.success ? "success" : "error",
+          title: data.message,
+          confirmButtonColor: "#79480C",
+        });
+
+        cargarReservas();
+      });
+    });
+
+    // CANCELAR RESERVA
     document.querySelectorAll(".btn-cancelar-reserva").forEach((boton) => {
       boton.addEventListener("click", async () => {
         const idReserva = boton.dataset.id;

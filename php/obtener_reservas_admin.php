@@ -33,6 +33,7 @@ try {
                 u.correo,
                 'Hotel' AS tipo_reserva,
                 CONCAT(rh.fecha_entrada, ' → ', rh.fecha_salida) AS fechas,
+                rh.estado,
                 'hotel' AS tipo
             FROM reservas_hotel rh
             INNER JOIN usuarios u
@@ -66,6 +67,7 @@ try {
                 u.correo,
                 'Restaurante' AS tipo_reserva,
                 rr.fecha_hora AS fechas,
+                rr.estado,
                 'restaurante' AS tipo
             FROM reservas_restaurante rr
             INNER JOIN usuarios u
@@ -99,6 +101,7 @@ try {
                 u.correo,
                 'Celebración' AS tipo_reserva,
                 rc.fecha_celebracion AS fechas,
+                rc.estado,
                 'celebracion' AS tipo
             FROM reservas_celebraciones rc
             INNER JOIN usuarios u

@@ -191,6 +191,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                                     <th>Correo</th>
                                     <th>Tipo de reserva</th>
                                     <th>Fecha / Fechas</th>
+                                    <th>Estado</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
