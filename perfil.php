@@ -64,7 +64,7 @@
 
                             <div class="col-12 col-lg-6">
                                 <label for="perfil-telefono" class="form-label text-center w-100">Teléfono</label>
-                                <input type="tel" class="form-control" id="perfil-telefono" name="telefono">
+                                <input type="text" class="form-control" id="perfil-telefono" name="telefono" maxlength="9" pattern="[0-9]{9}" inputmode="numeric">
                             </div>
 
                             <div class="col-12 col-lg-6">
@@ -74,7 +74,7 @@
 
                             <div class="col-12">
                                 <label for="perfil-correo" class="form-label text-center w-100">Correo electrónico</label>
-                                <input type="email" class="form-control" id="perfil-correo" name="correo">
+                                <input type="email" class="form-control" id="perfil-correo" name="correo" readonly>
 
                                 <p class="text-center mt-2 mb-0">
                                     ¿Quieres acceder con otra cuenta?

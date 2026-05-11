@@ -409,10 +409,22 @@ document.addEventListener("DOMContentLoaded", function () {
         formPerfil.addEventListener("submit", async function (e) {
             e.preventDefault();
 
+            const telefono = inputTelefono.value.trim();
+
+            if (!/^[0-9]{9}$/.test(telefono)) {
+                await alerta.fire({
+                    icon: "error",
+                    title: "Teléfono inválido",
+                    text: "El teléfono debe tener exactamente 9 números."
+                });
+
+                return;
+            }
+
             const datos = new FormData();
             datos.append("nombre", inputNombre.value.trim());
             datos.append("apellidos", inputApellidos.value.trim());
-            datos.append("telefono", inputTelefono.value.trim());
+            datos.append("telefono", telefono);
             datos.append("correo", inputCorreo.value.trim());
             datos.append("direccion", inputDireccion.value.trim());
 

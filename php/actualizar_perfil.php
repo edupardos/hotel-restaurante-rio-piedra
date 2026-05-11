@@ -17,7 +17,17 @@ $idUsuario = $_SESSION['id_usuario'];
 $nombre = trim($_POST['nombre'] ?? '');
 $apellidos = trim($_POST['apellidos'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
-$correo = trim($_POST['correo'] ?? '');
+
+$sqlCorreoActual = "SELECT correo FROM usuarios WHERE id_usuario = :id_usuario";
+
+$stmtCorreoActual = $conexion->prepare($sqlCorreoActual);
+$stmtCorreoActual->bindParam(':id_usuario', $idUsuario, PDO::PARAM_INT);
+$stmtCorreoActual->execute();
+
+$usuarioActual = $stmtCorreoActual->fetch(PDO::FETCH_ASSOC);
+
+$correo = $usuarioActual['correo'];
+
 $direccion = trim($_POST['direccion'] ?? '');
 
 if (empty($nombre) || empty($apellidos) || empty($correo)) {
@@ -32,6 +42,14 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     echo json_encode([
         'success' => false,
         'message' => 'El correo no es válido'
+    ]);
+    exit;
+}
+
+if (!empty($telefono) && !preg_match('/^[0-9]{9}$/', $telefono)) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'El teléfono debe tener exactamente 9 números'
     ]);
     exit;
 }
