@@ -345,6 +345,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!confirmacion.isConfirmed) return;
 
+        mostrarLoader();
+
         const datos = new FormData();
         datos.append("tipo", tipo);
         datos.append("id_reserva", idReserva);
@@ -358,6 +360,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const resultado = await respuesta.json();
 
             if (!resultado.success) {
+
+                ocultarLoader();
+                
                 await alerta.fire({
                     icon: "error",
                     title: "Error",
@@ -365,6 +370,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 return;
             }
+
+            ocultarLoader();
 
             await alerta.fire({
                 icon: "success",
@@ -386,6 +393,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 title: "Error de conexión",
                 text: "No se ha podido conectar con el servidor"
             });
+        } finally {
+            ocultarLoader();
         }
     }
 

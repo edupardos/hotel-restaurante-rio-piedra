@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const confirmacion = await Swal.fire({
           title: "¿Confirmar reserva?",
-          text: "La reserva pasará a confirmada",
+          text: "La reserva pasará a confirmada y se enviará un correo al usuario",
           icon: "question",
           showCancelButton: true,
           confirmButtonColor: "#79480C",
@@ -306,38 +306,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!confirmacion.isConfirmed) return;
 
-        const response = await fetch("php/confirmar_reserva_admin.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id_reserva: idReserva,
-            tipo: tipo,
-          }),
-        });
+        mostrarLoader();
 
-        const data = await response.json();
+        try {
+          const response = await fetch("php/confirmar_reserva_admin.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id_reserva: idReserva,
+              tipo: tipo,
+            }),
+          });
 
-        Swal.fire({
-          icon: data.success ? "success" : "error",
-          title: data.message,
-          confirmButtonColor: "#79480C",
-        });
+          const data = await response.json();
 
-        cargarReservas();
+          ocultarLoader();
+
+          await Swal.fire({
+            icon: data.success ? "success" : "error",
+            title: data.message,
+            confirmButtonColor: "#79480C",
+          });
+
+          cargarReservas();
+
+        } catch (error) {
+          ocultarLoader();
+
+          await Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No se pudo confirmar la reserva",
+            confirmButtonColor: "#79480C",
+          });
+        }
       });
     });
 
     // CANCELAR RESERVA
     document.querySelectorAll(".btn-cancelar-reserva").forEach((boton) => {
       boton.addEventListener("click", async () => {
+
         const idReserva = boton.dataset.id;
         const tipo = boton.dataset.tipo;
 
         const confirmacion = await Swal.fire({
           title: "¿Cancelar reserva?",
-          text: "La reserva pasará a anulada",
+          text: "La reserva pasará a anulada y se enviará un correo al usuario",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#79480C",
@@ -348,26 +365,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!confirmacion.isConfirmed) return;
 
-        const response = await fetch("php/cancelar_reserva_admin.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id_reserva: idReserva,
-            tipo: tipo,
-          }),
-        });
+        mostrarLoader();
 
-        const data = await response.json();
+        try {
+          const response = await fetch("php/cancelar_reserva_admin.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id_reserva: idReserva,
+              tipo: tipo,
+            }),
+          });
 
-        Swal.fire({
-          icon: data.success ? "success" : "error",
-          title: data.message,
-          confirmButtonColor: "#79480C",
-        });
+          const data = await response.json();
 
-        cargarReservas();
+          ocultarLoader();
+
+          await Swal.fire({
+            icon: data.success ? "success" : "error",
+            title: data.message,
+            confirmButtonColor: "#79480C",
+          });
+
+          cargarReservas();
+
+        } catch (error) {
+          ocultarLoader();
+
+          await Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No se pudo cancelar la reserva",
+            confirmButtonColor: "#79480C",
+          });
+        }
       });
     });
   }
